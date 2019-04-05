@@ -9,7 +9,6 @@ import { createStore } from 'redux';
 import Todos from './Todos';
 
 const store = createStore(Todos)
-console.log(store)
 
 ReactDOM.render(
 	<Provider store={store}>

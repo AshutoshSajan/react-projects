@@ -54,7 +54,6 @@ table {
 input, button {
   outline: 0;
   border: 0;
-  background: transparent;
   padding: 4px 10px;
   font-size: 22px;
 }

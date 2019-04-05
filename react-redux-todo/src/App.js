@@ -11,53 +11,53 @@ class App extends Component {
   
   handleEnter = (e) => {
     if(e.key === "Enter" && e.target.value.trim()){
-      console.log(e.target.value);
       this.handleClick();
     }
   }
 
   handleClick = () => {
-    console.log(this.input.current.value)
-    this.props.dispatch(
+    if(this.input.current.value.trim()){
+      this.props.dispatch(
       { type: "ADD_TODO",
         text: this.input.current.value,
-        done: false
       })
-
-    this.input.current.value = "";
+      this.input.current.value = "";
+    }
   }
 
-  handleRemove = (e) => {
-    console.log(e)
-    console.log(this.props.todo)
+  handleRemove = (id) => {
+    this.props.dispatch({ type: "REMOVE_TODO", id: id})
+  }
+
+  toggleTodo = (id) => {
+    this.props.dispatch({ type: "TOOGLE_TODO", id: id})
   }
 
   render() {
-    console.log(this.props)
     return (
-      <div className="todos">
+      <div className="input-container">
         <h2 className="header">Todos</h2>
-        <div className="input-box">
-          <input type="text" placeholder="Add your todo" ref={this.input} onKeyPress={this.handleEnter}/>
-          <button onClick={this.handleClick}>Add</button>
+        <div className="todos">
+          <div className="input-box">
+            <input type="text" placeholder="Add your todo" ref={this.input} onKeyPress={this.handleEnter}/>
+            <button onClick={this.handleClick}>Add</button>
+          </div>
+          <ul className="ul">
+            {this.props.todo.map(todo =>
+              <li className="todo-list" key={todo.id}>
+                <input type="checkbox" checked = {todo.completed} onChange={() => this.toggleTodo(todo.id)}/>
+                <span>{todo.text}</span>
+                <button onClick={() => this.handleRemove(todo.id)}>X</button>
+              </li>
+            )}
+          </ul>
         </div>
-        <ul className="ul">
-          {this.props.todo.map(todo =>
-            // console.log(todo)
-            <li className="todo-list" key={todo}>
-              <input type="checkbox" onClick={""}/>
-              <span key={todo}>{todo.text}</span>
-              <button key={todo} onClick={this.handleRemove}>X</button>
-            </li>
-          )}
-        </ul>
       </div>
     );
   }
 }
 
 function mapState(state){
-  console.log(state);
   return {
     todo: state,
   }
