@@ -1,0 +1,23 @@
+.main {
+	display: grid;
+	place-items: center
+}
+
+.header {
+	font-size: 40px;
+	font-style: italic;
+}
+
+.todo-container {
+	border: 1px solid gray;
+}
+
+.input-box {
+	border-bottom: 1px solid gray;
+}
+.list {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0;
+	align-items: center;
+}
