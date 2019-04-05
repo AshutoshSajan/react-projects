@@ -1,0 +1,25 @@
+.todos {
+	text-align: center;
+}
+.header {
+	font-size: 40px;
+	/*text-align: center;*/
+}
+
+.input-box {
+	border: 1px solid gray;
+	display: inline-block;
+}
+.ul {
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	width: 370px;
+	transform: translateX(-50%);
+}
+
+.todo-list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
